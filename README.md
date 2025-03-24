@@ -5,7 +5,7 @@
 以下のコマンドを実行して、ローカル環境にリポジトリをクローンしてください。
 
 ```sh
-git clone https://github.com/あなたのユーザー名/ocsPos.git
+git clone https://github.com/SHIVAYUYA/ocsPos.git
 cd ocsPos
 ```
 
