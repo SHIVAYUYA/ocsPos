@@ -28,6 +28,7 @@ header {
     width: 100vw;
 }
 
+.product,
 .storeAdd,
 .productAdd {
     background-color: #E8822A;
@@ -38,6 +39,7 @@ header {
     width: 10%;
 }
 
+.storeAdd,
 .productAdd {
     margin-left: 6px;
 }
@@ -218,6 +220,7 @@ ul.productList {
 .storeForm--index {
     opacity: 0;           /* 要素の透明度 */
     pointer-events: none; /* マウスイベントをキャンセル */
+    position: absolute;
 }
 
 /* 店舗登録 active */
@@ -227,8 +230,7 @@ ul.productList {
     opacity: 1;                   /* 要素の透明度 */
     pointer-events: auto;         /* マウスイベントをオン */
     width: 50vw;                  /* 横幅 100% */
-    height: 70vh;                 /* 縦幅 right-content - 5vh */
-    background-color: #E8822A;
+    height: 65vh;                 /* 縦幅 right-content - 5vh */
 }
 
 .right__content--storeFormTtlArea {
@@ -251,24 +253,56 @@ ul.productList {
 }
 
 .storeForm-group {
-    height: 65vh;
-    background-color: #1b7bdc;
+    height: 60vh;
+    margin-left: 2.5vw; /* tableの横の空間と物理的にあわせています */
 }
+
 
 /* インプット要素の指定 */
 .storeForm--input {
     background-color: #E8822A;
+    padding: 1rem;
+    color: #fff;
+    width: 40vw;
+}
+
+td select {
+    width: 100%;
+    height: 100%;
+}
+
+td input {
+    width: 99%;
+    height: 100%;
+}
+
+.store_btn_box {
+    display: flex;
+    justify-content: end;
 }
 
 .store_btn {
-    height: 5vh;    /* 縦幅 right-content - storeForm */
-    width: 100%;
-    color: #fff;
+    align-items: center;
+    border: #fff 1px solid;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    height: 1.5rem;    /* 縦幅 right-content - storeForm */
+    width: 1.5rem;
 }
 
 .store_btn--styleBox {
-    border: #fff 1px solid;
-    border-radius: 10px;
+    color: #fff;
+    display: inline-block;
+}
+
+.storeFormAdd {
+    appearance: none;
+    border: none;
+    color: #fff;
+    height: 5vh;
+    width: 100%;
+    background-color: #E8822A;
 }
 
 
@@ -289,9 +323,24 @@ ul.productList {
     height: 75vh;                 /* 縦幅 100% */
 }
 
+.right__content--productFormTtlArea {
+    align-items: center;
+    display: flex;
+    height: 10vh;
+    justify-content: left;
+    width: calc(50vw - 2px);
+}
 
-
-
+.right__content--productFormTtlBg {
+    align-items: center;
+    background-color: #E8822A;
+    border: 2px solid #E1E1E1;
+    display: flex;
+    height: 5vh;
+    justify-content: space-around;
+    margin-left: 2.5vw; /* tableの横の空間と物理的にあわせています */
+    width: 20vw;
+}
 
 /*==============================
     footerコンテンツ
