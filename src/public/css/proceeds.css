@@ -1,0 +1,63 @@
+th,td{
+    border: 1px solid black;
+    padding: 5px 30px;
+}
+
+tr[color='blue'] {
+    background-color: #A0D7FA;
+}
+
+tr[color='gray'] {
+    background-color: #D9D9D9;
+}
+
+tr[color='orange'] {
+    background-color: #DFAB7E; 
+}
+
+table{
+    border-collapse: collapse; /* ボーダーを重ねて表示 */
+    margin: 5% auto;
+}
+
+header{
+    /* text-align: center; */
+    border-bottom: solid 5px #A0D7FA;
+}
+
+h2{
+    text-align: center;
+}
+
+h4{
+    text-align: right;
+}
+
+footer{
+    border-top: solid 5px #A0D7FA;
+}
+
+.return{
+    color: white;
+    background-color: rgb(80, 80, 80);
+    padding: 10px 20px;
+    margin: 2% auto;
+}
+
+.return-button{
+    text-align: right;
+}
+
+.update{
+    color: white;
+    background-color: #FF4000;
+    padding: 10px 20px;
+    margin: 2% auto;   
+}
+
+.update-button{
+    text-align: right;
+}
+
+
+

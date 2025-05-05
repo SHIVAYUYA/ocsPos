@@ -1,0 +1,94 @@
+body {
+    margin: 0;
+    font-family: "Yu Gothic", "Hiragino Kaku Gothic Pro", Meiryo, sans-serif;
+    background-color: #f0f1f2;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
+}
+header {
+    text-align: center;
+    padding: 20px 0 10px 0;
+    font-size: 1.5rem;
+    font-weight: bold;
+    letter-spacing: 0.1em;
+    background-color: white;
+
+    background: #fff;
+padding-top: 60px;   /* 上の余白を増やす */
+padding-bottom: 60px;/* 下の余白を増やす */
+/* 必要ならheight: 180px; なども指定可能 */
+border-bottom: 2px solid #2196f3;
+}
+
+
+.container {
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 40px;
+}
+
+.button {
+width: 340px;   /* ←幅を大きく */
+height: 220px;  /* ←高さを大きく */
+background: linear-gradient(to right, #ff5f57, #f0a02b);
+border: none;
+border-radius: 8px;
+color: white;
+font-weight: bold;
+font-size: 1.7rem;
+cursor: pointer;
+display: flex;
+flex-direction: column;
+justify-content: center;
+align-items: center;
+box-shadow: 0 0 12px rgba(255, 95, 87, 0.4);
+transition: background 0.3s ease;
+margin: 0 40px;
+}
+.button:hover {
+    background: linear-gradient(to right, #f0a02b, #ff5f57);
+}
+.button .jp {
+font-size: 2.1rem;
+margin-bottom: 12px;
+}
+.button .en {
+font-size: 1.1rem;
+opacity: 0.85;
+}
+.icon {
+margin-top: 18px;
+width: 54px;
+height: 54px;
+fill: white;
+}
+
+
+footer {
+    background: #fff;
+    padding-top: 40px;   /* 上の余白を増やす */
+    padding-bottom: 40px;/* 下の余白を増やす */
+    border-top: 2px solid #2196f3;
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-end;
+    min-height: 120px;   /* 高さを最低120pxに */
+    }
+
+.logout {
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+
+.footer-text {
+    color: #007bff;
+    font-weight: bold;
+}

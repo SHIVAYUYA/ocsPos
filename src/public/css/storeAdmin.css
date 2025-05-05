@@ -1,0 +1,430 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+/*==============================
+    headerコンテンツ
+==============================*/
+header {
+    align-items: end;
+    border-bottom: 1px solid #1b7bdc;
+    display: flex;
+    height: 10vh;
+    justify-content: center;
+}
+
+.page--title {
+    font-size: 20px;
+    font-weight: normal;
+    padding-bottom: 1rem;
+}
+
+.button__space {
+    align-items: center;
+    background-color: #E1E1E1;
+    display: flex;
+    height: 5vh;
+    width: 100vw;
+}
+
+.product,
+.storeAdd,
+.productAdd {
+    background-color: #E8822A;
+    border: 2px solid #fff;
+    color: #fff;
+    font-size: 20px;
+    height: 80%;
+    width: 10%;
+}
+
+.storeAdd,
+.productAdd {
+    margin-left: 6px;
+}
+
+/*==============================
+    mainコンテンツ
+==============================*/
+main {
+    height: 75vh;
+}
+
+.main__inner {
+    display: flex;
+    height: 75vh;
+}
+
+/*------------ 左側の内容 ------------*/
+.left__content {
+    border-right: 1px solid #E1E1E1;
+    flex-direction: column;
+    height: 75vh;
+    width: 50vw;
+    background-color: aqua;
+}
+
+.left__content--ttlArea {
+    align-items: center;
+    display: flex;
+    height: 10vh;
+    justify-content: left;
+    width: calc(50vw - 2px);
+}
+
+.left__content--ttlBg {
+    align-items: center;
+    background-color: #4CA0EB;
+    border: 2px solid #E1E1E1;
+    display: flex;
+    height: 5vh;
+    justify-content: space-around;
+    margin-left: 2.5vw; /* tableの横の空間と物理的にあわせています */
+    width: 20vw;
+}
+
+.left__content--ttl {
+    color: #fff;
+    font-size: 25px;
+    font-weight: normal;
+    text-align: center;
+}
+
+.left__content--tableArea {
+    display: flex;
+    height: 65vh;
+    justify-content: center;
+    width: calc(50vw - 2px);
+}
+
+table.left__content--table {
+    border-collapse: collapse;
+}
+
+table.left__content--table th,
+table.left__content--table td {
+    text-align: center;
+    width: calc(45vw / 4);
+}
+
+table.left__content--table td {
+    padding: 10px 0px;
+}
+
+table.left__content--table tbody tr {
+    background-color: #E1E1E1;
+}
+
+
+/*------------ 右側の内容 ------------*/
+.right__content {
+    display: flex;
+    flex-direction: column;
+    height: 75vh;   /* 右側のコンテンツ全体の高さ -> mainと高さは同じ */
+    width: 50vw;
+    position: relative;
+}
+
+/* 範囲の指定 */
+.right__content--ttlArea {
+    align-items: center;
+    display: flex;
+    height: 10vh;
+    justify-content: left;
+    width: calc(50vw - 2px);
+}
+
+.right__content--ttlBg {
+    align-items: center;
+    background-color: #4CA0EB;
+    border: 2px solid #E1E1E1;
+    display: flex;
+    height: 5vh;
+    justify-content: space-around;
+    margin-left: 2.5vw;             /* tableの横の空間と物理的にあわせています */
+    width: 20vw;
+}
+
+.right__content--ttl {
+    color: #fff;
+    font-size: 25px;
+    font-weight: normal;
+    text-align: center;
+}
+
+/*-- 画面の切り替え設定用cssとそのレイアウト --*/
+/* position:relativeは上記のright__contentに設定されている */
+
+/*---------------------- 
+    商品リストインデックス 
+----------------------*/
+.productList--index {
+    background-color: #ffffff;
+    width: 50vw;                    /* 横幅 100% */
+    height: 75vh;                   /* 縦幅 100% */
+    position: absolute;           /* 子要素 */
+    opacity: 1;                   /* 要素の透明度 */
+    pointer-events: auto;         /* マウスイベントをオン */
+}
+
+.right__content--tableArea {
+    height: 65vh;
+}
+
+ul.productList {
+    margin-left: 2.5vw;             /* tableの横の空間と物理的にあわせています */
+}
+
+.productList li {
+    background-color: #E1E1E1;
+    display: flex;
+    justify-content: space-between;
+    list-style: none;
+    height: 3rem;
+    width: 40vw;
+}
+
+.productList__image,
+.productList__name,
+.productList__money {
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+.productList__image {
+    width: 20%;
+}
+
+.productList__name {
+    width: 60%;
+}
+
+.productList__money {
+    width: 20%;
+}
+
+/* 商品リスト active */
+.productList--index.active {
+    opacity: 0;           /* 要素の透明度 */
+    pointer-events: none; /* マウスイベントをキャンセル */
+}
+
+/*---------------------- 
+    店舗登録インデックス 
+----------------------*/
+.storeForm--index {
+    opacity: 0;           /* 要素の透明度 */
+    pointer-events: none; /* マウスイベントをキャンセル */
+    position: absolute;
+}
+
+/* 店舗登録 active */
+.storeForm--index.active {
+    background-color: #fff;
+    position: absolute;           /* 子要素 */
+    opacity: 1;                   /* 要素の透明度 */
+    pointer-events: auto;         /* マウスイベントをオン */
+    width: 50vw;                  /* 横幅 100% */
+    height: 65vh;                 /* 縦幅 right-content - 5vh */
+}
+
+.right__content--storeFormTtlArea {
+    align-items: center;
+    display: flex;
+    height: 10vh;
+    justify-content: left;
+    width: calc(50vw - 2px);
+}
+
+.right__content--storeFormTtlBg {
+    align-items: center;
+    background-color: #E8822A;
+    border: 2px solid #E1E1E1;
+    display: flex;
+    height: 5vh;
+    justify-content: space-around;
+    margin-left: 2.5vw; /* tableの横の空間と物理的にあわせています */
+    width: 20vw;
+}
+
+.storeForm-group {
+    height: 60vh;
+    margin-left: 2.5vw; /* tableの横の空間と物理的にあわせています */
+}
+
+
+/* インプット要素の指定 */
+.storeForm--input {
+    background-color: #E8822A;
+    padding: 1rem;
+    color: #fff;
+    width: 40vw;
+}
+
+td select {
+    width: 100%;
+    height: 100%;
+}
+
+td input {
+    width: 99%;
+    height: 100%;
+}
+
+.store_btn_box {
+    display: flex;
+    justify-content: end;
+}
+
+.store_btn {
+    align-items: center;
+    border: #fff 1px solid;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    height: 1.5rem;    /* 縦幅 right-content - storeForm */
+    width: 1.5rem;
+}
+
+.store_btn--styleBox {
+    color: #fff;
+    display: inline-block;
+}
+
+.storeFormAdd {
+    appearance: none;
+    border: none;
+    color: #fff;
+    height: 5vh;
+    width: 100%;
+    background-color: #E8822A;
+}
+
+
+/*---------------------- 
+    商品登録インデックス 
+----------------------*/
+.productForm--index {
+    opacity: 0;           /* 要素の透明度 */
+    pointer-events: none; /* マウスイベントをキャンセル */
+    position: absolute;
+}
+
+
+/* 商品登録 active */
+.productForm--index.active {
+    position: absolute;           /* 子要素 */
+    opacity: 1;                   /* 要素の透明度 */
+    pointer-events: auto;         /* マウスイベントをオン */
+    width: 50vw;                  /* 横幅 100% */
+    height: 75vh;                 /* 縦幅 100% */
+}
+
+.right__content--productFormTtlArea {
+    align-items: center;
+    display: flex;
+    height: 10vh;
+    justify-content: left;
+    width: calc(50vw - 2px);
+}
+
+.right__content--productFormTtlBg {
+    align-items: center;
+    background-color: #E8822A;
+    border: 2px solid #E1E1E1;
+    display: flex;
+    height: 5vh;
+    justify-content: space-around;
+    margin-left: 2.5vw; /* tableの横の空間と物理的にあわせています */
+    width: 20vw;
+}
+
+
+/* インプット要素の指定 */
+.storeForm--input {
+    background-color: #E8822A;
+    padding: 1rem;
+    color: #fff;
+    width: 40vw;
+}
+
+td select {
+    width: 100%;
+    height: 100%;
+}
+
+td input {
+    width: 99%;
+    height: 100%;
+}
+
+.product_btn_box {
+    display: flex;
+    justify-content: end;
+}
+
+.product_btn {
+    align-items: center;
+    border: #fff 1px solid;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    height: 1.5rem;    /* 縦幅 right-content - storeForm */
+    width: 3.0rem;
+}
+
+.product_btn--styleBox {
+    color: #fff;
+    display: inline-block;
+}
+
+.picture-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+.pictureSelectBtn {
+    background-color: #ffffff;       /* 緑色の背景 */
+    color: #E8822A;                    /* 文字色 */
+    /* padding: 10px 20px;              パディング */
+    border: none;                    /* 枠線なし */
+    border-radius: 5px;             /* 丸み */
+    cursor: pointer;                 /* ポインター表示 */
+    /* font-size: 16px;                 フォントサイズ */
+    /* transition: all 0.3s ease;       ホバー時のアニメーション */
+}
+
+.productFormAdd {
+    appearance: none;
+    border: none;
+    color: #fff;
+    height: 5vh;
+    width: 100%;
+    background-color: #E8822A;
+}
+
+
+
+/*==============================
+    footerコンテンツ
+==============================*/
+footer {
+    border-top: 1px solid #1b7bdc;
+    height: 10vh;
+}
+
+.return{
+    color: white;
+    background-color: rgb(80, 80, 80);
+    padding: 10px 20px;
+    margin: 2% auto;
+}
+
+.return-button{
+    text-align: right;
+}
+
