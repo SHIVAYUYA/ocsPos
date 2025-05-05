@@ -1,0 +1,29 @@
+# Laravel 環境で無視するべきファイル
+/src/vendor/
+/src/node_modules/
+/src/storage/*.key
+/src/storage/app/public
+/src/storage/framework/*
+!/src/storage/framework/.gitignore
+/src/storage/logs/*
+/src/bootstrap/cache/*.php
+
+# Laravel 環境ファイル（個人環境に依存）
+/src/.env
+/src/.env.*
+
+# キャッシュファイル
+/src/.phpunit.result.cache
+
+# IDE関連
+.idea/
+.vscode/
+*.swp
+
+# OSごとのゴミファイル
+.DS_Store
+Thumbs.db
+
+# Docker関連（必要に応じて）
+/docker/*.log
+docker-compose.override.yml
