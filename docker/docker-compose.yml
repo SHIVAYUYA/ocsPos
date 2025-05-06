@@ -22,8 +22,8 @@ services:
       - app
 
   db:
-    image: mariadb:10.4
-    # image: mysql:8.0  # ← MySQL に変更
+    # image: mariadb:10.4
+    image: mysql:8.0  # ← MySQL に変更
     container_name: laravel_db
     restart: always
     environment:
