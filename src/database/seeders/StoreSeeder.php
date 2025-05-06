@@ -17,7 +17,7 @@ class StoreSeeder extends Seeder
                 'classroom' => '101'
             ],
             [
-                'class_name' => '2B',
+                'class_name' => '2A',
                 'store_name' => 'クレープ屋',
                 'type' => 2,
                 'classroom' => '102'

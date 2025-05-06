@@ -10,15 +10,19 @@
 <body>
 <header>
   <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-  <div>WestVillage</div>
+  @if ($store)
+    <div>{{ $store->store_name }}（{{ $store->class_name }}）</div>
+  @else
+    <div>店舗情報なし</div>
+  @endif
   <div>{{ now()->format('m月d日 H:i') }}</div>
 </header>
+
 
 <div class="side-menu" id="sideMenu">
   <div class="close-menu" onclick="toggleMenu()">✕</div>
   <a href="#" onclick="openDiscountModal()">割引き</a>
-  <!-- 会計履歴のリンク先はsales.blade.php -->
-  <a href="{{ route('user.sales')}}">会計履歴</a> 
+  <a href="{{ route('user.sales') }}">会計履歴</a> 
   <div id="historyLog"></div>
   <form action="{{ route('logout') }}" method="POST">
     @csrf
@@ -29,8 +33,22 @@
 <div class="container">
   <div class="left-panel">
     <button class="discount-button" onclick="openDiscountModal()">割引き</button>
-    <div class="product-grid" id="productGrid"></div>
+    
+    {{-- 商品一覧 --}}
+    <div class="product-grid" id="productGrid">
+      @foreach ($products as $product)
+        <div class="product-item" 
+             data-id="{{ $product->id }}" 
+             data-name="{{ $product->name }}" 
+             data-price="{{ $product->price }}"
+             onclick="addToCart({{ $product->id }}, '{{ $product->name }}', {{ $product->price }})">
+          <div class="product-name">{{ $product->name }}</div>
+          <div class="product-price">¥{{ $product->price }}</div>
+        </div>
+      @endforeach
+    </div>
   </div>
+
   <div class="right-panel">
     <div id="cart"></div>
     <div class="totals">
@@ -41,6 +59,7 @@
   </div>
 </div>
 
+{{-- 割引モーダル --}}
 <div class="overlay" id="overlay" style="display: none;"></div>
 <div class="modal" id="discountModal" style="display: none;">
   <div class="modal-left" id="discountProductList"></div>
@@ -55,6 +74,10 @@
 
 <footer>ページ数、例（1/2）</footer>
 
+<!-- <script src="{{ asset('javascript/resister.js') }}"></script> -->
+<script>
+    const products = @json($products);
+</script>
 <script src="{{ asset('javascript/resister.js') }}"></script>
 </body>
 </html>

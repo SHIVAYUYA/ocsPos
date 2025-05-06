@@ -11,4 +11,11 @@ class Product extends Model
     public $timestamps = false;
 
     protected $fillable = ['product_code', 'product_name', 'price'];
+
+    // store_nameで関連付け
+    public function store()
+    {
+        return $this->belongsTo(Store::class, 'store_name', 'store_name'); // store_name を参照
+    }
 }
+
