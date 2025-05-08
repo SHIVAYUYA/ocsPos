@@ -48,3 +48,7 @@ ocsPos/
 ├── docker-compose.yml         # コンテナ定義
 └── README.md                  # 本ドキュメント
 ```  
+
+### もしファイルが読み込めない場合
+手動で変換（Linux コマンド）：
+dos2unix docker/entrypoint.sh
