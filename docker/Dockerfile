@@ -27,16 +27,13 @@ RUN apt-get update && apt-get install -y \
 # Composer のインストール（マルチステージビルドで composer を取り込み）
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
-# アプリケーションコードのコピー
+# アプリケーションコードのコピー（後でvolumeで上書きされる可能性あり）
 COPY ./src /var/www
 
 # 作業ディレクトリ設定
 WORKDIR /var/www
 
-# Composer 依存関係のインストール
-RUN composer install --no-interaction --prefer-dist --optimize-autoloader
-
-# Laravelのパーミッション修正
+# Laravelのパーミッション修正（vendorは作らない）
 RUN mkdir -p storage/framework/cache/data && \
     chown -R www-data:www-data storage bootstrap/cache && \
     chmod -R 775 storage bootstrap/cache
@@ -45,5 +42,5 @@ RUN mkdir -p storage/framework/cache/data && \
 COPY ./docker/entrypoint.sh /usr/local/bin/entrypoint.sh
 RUN chmod +x /usr/local/bin/entrypoint.sh
 
-# php-fpm をフォアグラウンドで起動する entrypoint を使用
+# PHP-FPM をフォアグラウンドで起動
 ENTRYPOINT ["/usr/local/bin/entrypoint.sh"]
