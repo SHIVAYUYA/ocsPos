@@ -26,11 +26,9 @@ Route::get('/login', function () {
     return view('auth.index');
 })->name('login');
 
-// ユーザページルーティング
-// Route::get('/user/resister', function () {
-//     return view('user.resister');
-// })->middleware('auth');
+
 Route::get('/user/resister', [ResisterController::class, 'index'])->name('user.resister');
+Route::post('user/resister', [ResisterController::class, 'store']);
 
 Route::get('/user/sales', [SalesController::class, 'index'])->name('user.sales');
 
@@ -41,3 +39,5 @@ Route::get('/store', [StoreAdminController::class, 'index'])->name('admin.store.
 
 // 売上画面
 Route::get('/proceeds', [ProceedsController::class, 'index'])->name('proceeds.index');
+
+

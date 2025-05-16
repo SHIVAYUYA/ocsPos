@@ -15,12 +15,14 @@ class ProductSeeder extends Seeder
                 'product_name' => '焼きそば',
                 'price' => 300,
                 'picture' => null,
+                'class_name' => '2A',
             ],
             [
                 'product_code' => 'P002',
                 'product_name' => 'クレープ（いちご）',
                 'price' => 350,
                 'picture' => null,
+                'class_name' => '2A',
             ],
         ]);
     }

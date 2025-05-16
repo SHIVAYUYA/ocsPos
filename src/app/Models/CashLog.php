@@ -2,17 +2,24 @@
 
 namespace App\Models;
 
+use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
 class CashLog extends Model
 {
+    use HasFactory;
+
     protected $table = 'cash_log';
-    public $timestamps = false;
 
-    protected $primaryKey = ['coupon_id', 'class_name'];
-    public $incrementing = false;
+    protected $fillable = [
+        'class_name',
+        'product_code',
+        'count',
+        'trade_datetime',
+        'price',
+        'free',
+    ];
 
-    protected $fillable = ['coupon_id', 'class_name', 'trade_datetime', 'count', 'product_code', 'free'];
 
     public function product()
     {

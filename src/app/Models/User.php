@@ -2,9 +2,11 @@
 
 namespace App\Models;
 
+use App\Models\Store;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
 
 class User extends Authenticatable
 {
@@ -40,4 +42,10 @@ class User extends Authenticatable
     {
         return 'class_name';
     }
+
+    public function store(): BelongsTo
+    {   
+        return $this->belongsTo(Store::class, 'class_name', 'class_name');
+    }
+
 }

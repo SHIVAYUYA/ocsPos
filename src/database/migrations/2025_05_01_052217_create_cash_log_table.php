@@ -1,6 +1,5 @@
 <?php
 
-// database/migrations/2025_05_01_051335_create_cash_log_table.php
 use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
@@ -10,16 +9,15 @@ class CreateCashLogTable extends Migration
     public function up()
     {
         Schema::create('cash_log', function (Blueprint $table) {
-            $table->increments('coupon_id'); // auto_increment カラム
+            $table->id(); // Laravel 標準の auto-increment 主キー（id）
             $table->string('class_name', 10);
             $table->dateTime('trade_datetime', 6);
-            $table->integer('count');
-            $table->string('product_code', 5); // 確認: product テーブルの product_code と一致させる
+            $table->integer('count')->default(0); // 商品の個数
+            $table->string('product_code', 5); // 外部キー制約のある product_code
             $table->boolean('free')->nullable();
+            $table->timestamps(); // created_at, updated_at を追加（任意）
 
-            $table->primary(['coupon_id', 'class_name']);
-            
-            // 外部キー制約: データ型と長さが一致していることを確認
+            // 外部キー制約
             $table->foreign('product_code')
                 ->references('product_code')
                 ->on('product')
@@ -32,9 +30,9 @@ class CreateCashLogTable extends Migration
         });
     }
 
+
     public function down()
     {
         Schema::dropIfExists('cash_log');
     }
 }
-

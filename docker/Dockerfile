@@ -33,8 +33,10 @@ COPY ./src /var/www
 # 作業ディレクトリ設定
 WORKDIR /var/www
 
-# Laravelのパーミッション修正（vendorは作らない）
+# Laravelのパーミッション修正
 RUN mkdir -p storage/framework/cache/data && \
+    mkdir -p storage/logs && \
+    mkdir -p bootstrap/cache && \
     chown -R www-data:www-data storage bootstrap/cache && \
     chmod -R 775 storage bootstrap/cache
 

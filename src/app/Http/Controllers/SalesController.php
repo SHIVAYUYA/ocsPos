@@ -1,32 +1,23 @@
 <?php
+
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\Models\CashLog;
-use Illuminate\Support\Facades\DB;
+use Illuminate\View\View;
 
 class SalesController extends Controller
 {
-    public function index()
+    public function index(): View
     {
-        try {
-            // 最新の売上履歴を取得（例：直近30件）
-            $results = CashLog::with(['product', 'coupon'])
-                ->orderBy('trade_datetime', 'desc')
-                ->limit(30)
-                ->get();
+        $results = CashLog::with('product')->orderBy('trade_datetime', 'desc')->get();
+        $totalSum = $results->sum(function ($row) {
+            $price = $row->price ?? 0;
+            $count = $row->count ?? 0;
+            // クーポン値引きの計算方法が不明なため、必要に応じて修正してください
+            $coupon = 0; // 例として 0 を設定
+            return ($price * $count) - $coupon;
+        });
 
-            // 売上合計計算
-            $totalSum = $results->reduce(function ($carry, $row) {
-                $price = $row->product->price ?? 0;
-                $count = $row->count ?? 0;
-                $coupon = $row->coupon->coupon_price ?? 0;
-                return $carry + ($price * $count - $coupon);
-            }, 0);
-
-            return view('user.sales', compact('results', 'totalSum'));
-        } catch (\Exception $e) {
-            return view('user.sales', ['error' => '売上情報の取得中にエラーが発生しました。']);
-        }
+        return view('user.sales', compact('results', 'totalSum'));
     }
 }

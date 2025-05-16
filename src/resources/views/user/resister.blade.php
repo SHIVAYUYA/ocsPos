@@ -1,28 +1,29 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="{{ asset('css/resister.css') }}">
-    <title>会計画面</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- <meta name="csrf-token" content="{{ csrf_token() }}">  -->
+  <!-- <meta name="csrf-token" content="{{ csrf_token() }}"> -->
+   <meta name="csrf-token" content="{{ csrf_token() }}">
+  <link rel="stylesheet" href="{{ asset('css/resister.css') }}">
+  <title>会計画面</title>
 </head>
-
 <body>
 <header>
-  <div class="menu-toggle" onclick="toggleMenu()">☰</div>
-  @if ($store)
-    <div>{{ $store->store_name }}（{{ $store->class_name }}）</div>
-  @else
-    <div>店舗情報なし</div>
-  @endif
-  <div>{{ now()->format('m月d日 H:i') }}</div>
+    <div class="menu-toggle" onclick="toggleMenu()">☰</div>
+    @if ($store)
+        <div>{{ $store->store_name }}（{{ $store->class_name }}）</div>
+    @else
+        <div>店舗情報なし</div>
+    @endif
+    <div>{{ now()->format('m月d日 H:i') }}</div>
 </header>
-
 
 <div class="side-menu" id="sideMenu">
   <div class="close-menu" onclick="toggleMenu()">✕</div>
   <a href="#" onclick="openDiscountModal()">割引き</a>
-  <a href="{{ route('user.sales') }}">会計履歴</a> 
+  <a href="{{ route('user.sales') }}">会計履歴</a>
   <div id="historyLog"></div>
   <form action="{{ route('logout') }}" method="POST">
     @csrf
@@ -33,20 +34,7 @@
 <div class="container">
   <div class="left-panel">
     <button class="discount-button" onclick="openDiscountModal()">割引き</button>
-    
-    {{-- 商品一覧 --}}
-    <div class="product-grid" id="productGrid">
-      @foreach ($products as $product)
-        <div class="product-item" 
-             data-id="{{ $product->id }}" 
-             data-name="{{ $product->name }}" 
-             data-price="{{ $product->price }}"
-             onclick="addToCart({{ $product->id }}, '{{ $product->name }}', {{ $product->price }})">
-          <div class="product-name">{{ $product->name }}</div>
-          <div class="product-price">¥{{ $product->price }}</div>
-        </div>
-      @endforeach
-    </div>
+    <div class="product-grid" id="productGrid"></div>
   </div>
 
   <div class="right-panel">
@@ -74,9 +62,8 @@
 
 <footer>ページ数、例（1/2）</footer>
 
-<!-- <script src="{{ asset('javascript/resister.js') }}"></script> -->
 <script>
-    const products = @json($products);
+  const products = @json($products);
 </script>
 <script src="{{ asset('javascript/resister.js') }}"></script>
 </body>

@@ -28,21 +28,25 @@
                         <th>クーポン値引き</th>
                         <th>合計金額</th>
                         <th>取引日時</th>
-                    </tr>                
+                    </tr>
                 </thead>
                 <tbody>
                     @isset($error)
                         <tr><td colspan="7">{{ $error }}</td></tr>
                     @else
+                        @php
+                            $grandTotal = 0; // 売上金額の合計を初期化
+                        @endphp
                         @forelse ($results as $row)
                             @php
                                 $price = $row->price ?? 0;
                                 $count = $row->count ?? 0;
                                 $coupon = $row->coupon_price ?? 0;
                                 $total = ($price * $count) - $coupon;
+                                $grandTotal += $total; // 各行の合計金額を grandTotal に加算
                             @endphp
                             <tr>
-                                <td>{{ $row->product_name }}</td>
+                                <td>{{ $row->product->product_name ?? '' }}</td>
                                 <td>{{ $row->product_code }}</td>
                                 <td>{{ number_format($price) }}円</td>
                                 <td>{{ $count }}</td>
@@ -59,7 +63,7 @@
         </div>
     </div>
     <div class="sum-button">
-        <button class="sum" type="button">売上金額：{{ number_format($totalSum ?? 0) }} 円</button>
+        <button class="sum" type="button">売上金額：{{ number_format($grandTotal ?? 0) }} 円</button> {{-- grandTotal を表示 --}}
     </div>
 </main>
 <footer>
