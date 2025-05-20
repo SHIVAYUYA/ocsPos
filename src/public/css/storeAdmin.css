@@ -62,7 +62,7 @@ main {
     flex-direction: column;
     height: 75vh;
     width: 50vw;
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 
 .left__content--ttlArea {
@@ -115,6 +115,16 @@ table.left__content--table td {
 table.left__content--table tbody tr {
     background-color: #E1E1E1;
 }
+
+
+
+table.left__content--table tbody tr:hover {
+    background-color: #f7c192; /* 好きな色に変えてください */
+    cursor: pointer;           /* クリック可能感を出したい場合 */
+}
+
+
+
 
 
 /*------------ 右側の内容 ------------*/
@@ -299,7 +309,7 @@ td input {
     color: #fff;
     height: 5vh;
     width: 100%;
-    background-color: #E8822A;
+    background: linear-gradient(to right, #ff5f57, #f0a02b);
 }
 
 
@@ -404,7 +414,7 @@ td input {
     color: #fff;
     height: 5vh;
     width: 100%;
-    background-color: #E8822A;
+    background: linear-gradient(to right, #ff5f57, #f0a02b);
 }
 
 

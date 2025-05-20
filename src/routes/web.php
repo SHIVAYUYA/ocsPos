@@ -7,7 +7,7 @@ use App\Http\Controllers\ProceedsController;
 use App\Http\Controllers\StoreAdminController;
 use App\Http\Controllers\ResisterController;
 use App\Http\Controllers\SalesController;
-
+use App\Http\Controllers\ProductAdminController;
 
 
 // ホームページ
@@ -35,7 +35,11 @@ Route::get('/user/sales', [SalesController::class, 'index'])->name('user.sales')
 
 // 管理者ページルーティング
 Route::get('/admin/index', [AdminController::class, 'index'])->name('admin.index'); // 修正
+
+// 店舗管理者ページルーティング
 Route::get('/store', [StoreAdminController::class, 'index'])->name('admin.store.index');
+Route::post('/admin/store/create', [StoreAdminController::class, 'store'])->name('admin.store.create');
+Route::post('/admin/product/create', [ProductAdminController::class, 'store'])->name('admin.product.create');
 
 // 売上画面
 Route::get('/proceeds', [ProceedsController::class, 'index'])->name('proceeds.index');

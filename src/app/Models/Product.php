@@ -8,16 +8,14 @@ class Product extends Model
     protected $table = 'product';
     protected $primaryKey = 'product_code';
     public $incrementing = false;
+    public $keyType = 'string';
     public $timestamps = false;
 
-    protected $fillable = ['product_code', 'product_name', 'price'];
+    protected $fillable = ['product_code', 'class_name', 'product_name', 'image_path', 'price'];
 
-   
-   // app/Models/Product.php
     public function store()
     {
         return $this->belongsTo(Store::class, 'class_name', 'class_name');
     }
-
 }
 
